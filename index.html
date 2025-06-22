@@ -300,6 +300,7 @@
             <div style="flex:1;">
               <label class="custom-file-label" for="logoInput">Select Image</label>
               <input type="file" id="logoInput" accept="image/*" style="display:none;">
+              <button class="btn" id="removeLogoBtn" type="button" style="margin-top:0.5rem;">Remove Center Logo</button>
             </div>
           </div>
         </div>
@@ -438,6 +439,15 @@
       document.getElementById("bgColor").value = "#ffffff";
       updateDownloadButtons();
       updateQRCode();
+    });
+
+    document.getElementById("removeLogoBtn").addEventListener("click", function() {
+      qrCode.update({ image: undefined });
+      document.getElementById("logoPreview").src = "";
+      document.getElementById("logoPreview").style.display = 'none';
+      centerLogoType = null;
+      centerLogoName = '';
+      updateDownloadButtons();
     });
 
     // Download buttons
